@@ -9,5 +9,6 @@ namespace BackEnd.Domain.IServices
     public interface IUsuarioService
     {
         Task SavedUser(Usuario usuario);
+        Task<bool> ValidateExistence(Usuario usuario);
     }
 }

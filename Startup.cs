@@ -1,5 +1,8 @@
 using BackEnd.Domain.IRepositories;
+using BackEnd.Domain.IServices;
 using BackEnd.Persistence.Context;
+using BackEnd.Persistence.Repositories;
+using BackEnd.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +33,8 @@ namespace BackEnd
             services.AddDbContext<AplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Conexion")));
 
-            services.AddScoped<IUsuarioRepository, IUsuarioRepository>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             services.AddControllers();
         }
