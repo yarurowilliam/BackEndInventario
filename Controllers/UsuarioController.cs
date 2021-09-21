@@ -1,5 +1,7 @@
 ﻿using BackEnd.Domain.IServices;
 using BackEnd.Domain.Models;
+using BackEnd.DTO;
+using BackEnd.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -29,8 +31,37 @@ namespace BackEnd.Controllers
                 {
                     return BadRequest(new { message = "El usuario " + usuario.NombreUsuario + " ya existe! " });
                 }
+                usuario.Password = Encriptar.EncriptarPassword(usuario.Password);
                 await _usuarioService.SavedUser(usuario);
                 return Ok(new { message = "Usuario registrado con exito" });
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        // localhost:xxxx/api/Usuario/CambiarPassword
+        [Route("CambiarPassword")]
+        [HttpPut]
+        public async Task<IActionResult> CambiarPassword([FromBody] CambiarPasswordDTO cambiarPassword)
+        {
+            try
+            {
+                int idUsuario = 5;
+                string passwordEncriptado = Encriptar.EncriptarPassword(cambiarPassword.passwordAnterior);
+                var usuario = await _usuarioService.ValidatePassword(idUsuario, passwordEncriptado);
+                if(usuario == null)
+                {
+                    return BadRequest(new { message = "La password es incorrecta" });
+                }
+                else
+                {
+                    usuario.Password = Encriptar.EncriptarPassword(cambiarPassword.nuevaPassword);
+                    await _usuarioService.UpdatePassword(usuario);
+                    return Ok(new { message = "La password fue actualizada con exito" });
+                }
+
+                
             }catch(Exception ex)
             {
                 return BadRequest(ex.Message);
