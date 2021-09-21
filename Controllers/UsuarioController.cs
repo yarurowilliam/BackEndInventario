@@ -2,11 +2,14 @@
 using BackEnd.Domain.Models;
 using BackEnd.DTO;
 using BackEnd.Utils;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace BackEnd.Controllers
@@ -42,12 +45,15 @@ namespace BackEnd.Controllers
 
         // localhost:xxxx/api/Usuario/CambiarPassword
         [Route("CambiarPassword")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut]
         public async Task<IActionResult> CambiarPassword([FromBody] CambiarPasswordDTO cambiarPassword)
         {
             try
             {
-                int idUsuario = 5;
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+
+                int idUsuario = JwtConfigurator.GetTokenIdUsuario(identity);
                 string passwordEncriptado = Encriptar.EncriptarPassword(cambiarPassword.passwordAnterior);
                 var usuario = await _usuarioService.ValidatePassword(idUsuario, passwordEncriptado);
                 if(usuario == null)
