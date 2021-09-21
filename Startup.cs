@@ -1,3 +1,4 @@
+using BackEnd.Domain.IRepositories;
 using BackEnd.Persistence.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,9 @@ namespace BackEnd
         {
             services.AddDbContext<AplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Conexion")));
+
+            services.AddScoped<IUsuarioRepository, IUsuarioRepository>();
+
             services.AddControllers();
         }
 
