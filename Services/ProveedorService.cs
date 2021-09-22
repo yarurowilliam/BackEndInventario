@@ -31,5 +31,10 @@ namespace BackEnd.Services
         {
             return await _proveedorRepository.GetListProveedoresFiltrada(nit);
         }
+
+        public async Task<Proveedor> GetProveedor(string nit)
+        {
+            return await _proveedorRepository.GetProveedor(nit);
+        }
     }
 }

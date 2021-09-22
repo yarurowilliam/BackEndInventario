@@ -40,7 +40,7 @@ namespace BackEnd.Controllers
 
         [Route("GetListProveedores")]
         [HttpGet]
-        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> GetListProveedores()
         {
             try
@@ -55,8 +55,8 @@ namespace BackEnd.Controllers
         }
 
         [Route("GetListProveedoresFiltrada")]
-        [HttpGet("{nit}")]
-        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> GetListProveedoresFiltrada(string nit)
         {
             try
@@ -67,6 +67,21 @@ namespace BackEnd.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+
+        [HttpGet("{nit}")]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> Get(string nit)
+        {
+            try
+            {
+                var cuestionario = await _proveedorService.GetProveedor(nit);
+                return Ok(cuestionario);
+            }catch(Exception e) 
+            {
+                return BadRequest(e.Message);
             }
         }
     }

@@ -11,5 +11,6 @@ namespace BackEnd.Domain.IRepositories
         Task CreateProveedor(Proveedor proveedor);
         Task<List<Proveedor>> GetListProveedores();
         Task<List<Proveedor>> GetListProveedoresFiltrada(string nit);
+        Task<Proveedor> GetProveedor(string nit);
     }
 }
