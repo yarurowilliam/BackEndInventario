@@ -1,4 +1,5 @@
-﻿using BackEnd.Domain.IServices;
+﻿using BackEnd.Domain.IRepositories;
+using BackEnd.Domain.IServices;
 using BackEnd.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace BackEnd.Services
     public class CategoriaService : ICategoriaService
     {
 
-        private readonly ICategoriaService _categoriaRepository;
+        private readonly ICategoriaRepository _categoriaRepository;
 
-        public CategoriaService(ICategoriaService categoriaService)
+        public CategoriaService(ICategoriaRepository categoriaRepository)
         {
-            _categoriaRepository = categoriaService;
+            _categoriaRepository = categoriaRepository;
         }
 
 
