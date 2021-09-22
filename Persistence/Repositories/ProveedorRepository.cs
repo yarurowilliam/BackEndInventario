@@ -1,0 +1,38 @@
+﻿using BackEnd.Domain.IRepositories;
+using BackEnd.Domain.Models;
+using BackEnd.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace BackEnd.Persistence.Repositories
+{
+    public class ProveedorRepository : IProveedorRepository
+    {
+        private readonly AplicationDbContext _context;
+        public ProveedorRepository(AplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task CreateProveedor(Proveedor proveedor)
+        {
+            _context.Add(proveedor);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Proveedor>> GetListProveedores()
+        {
+            var listProveedores = await _context.Proveedores.Where(x => x.Nit != null).ToListAsync();
+            return listProveedores;
+        }
+
+        public async Task<List<Proveedor>> GetListProveedoresFiltrada(string nit)
+        {
+            var listProveedores = await _context.Proveedores.Where(x => x.Nit == nit).ToListAsync();
+            return listProveedores;
+        }
+    }
+}
