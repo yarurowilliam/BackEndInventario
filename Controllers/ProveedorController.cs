@@ -86,7 +86,7 @@ namespace BackEnd.Controllers
         }
 
         [HttpDelete("{nit}")]
-        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Delete(string nit)
         {
             try
