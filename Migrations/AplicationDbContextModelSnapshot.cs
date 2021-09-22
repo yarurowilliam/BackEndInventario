@@ -29,9 +29,6 @@ namespace BackEnd.Migrations
                     b.Property<int>("CategoriaId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CategoriaNombre")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
@@ -39,21 +36,14 @@ namespace BackEnd.Migrations
                     b.Property<double>("Precio")
                         .HasColumnType("float");
 
-                    b.Property<int>("ProveedorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProveedorRazon")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("proveedorNit")
-                        .IsRequired()
+                    b.Property<string>("ProveedorNit")
                         .HasColumnType("varchar(20)");
 
                     b.HasKey("Referencia");
 
                     b.HasIndex("CategoriaId");
 
-                    b.HasIndex("proveedorNit");
+                    b.HasIndex("ProveedorNit");
 
                     b.ToTable("Articulos");
                 });
@@ -133,9 +123,7 @@ namespace BackEnd.Migrations
 
                     b.HasOne("BackEnd.Domain.Models.Proveedor", "proveedor")
                         .WithMany()
-                        .HasForeignKey("proveedorNit")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProveedorNit");
                 });
 #pragma warning restore 612, 618
         }

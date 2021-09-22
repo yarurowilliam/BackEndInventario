@@ -42,12 +42,14 @@ namespace BackEnd
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IProveedorService, ProveedorService>();
             services.AddScoped<ICategoriaService, CategoriaService>();
+            services.AddScoped<IArticuloService, ArticuloService>();
 
             //repository
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ILoginRepository, LoginRepository>();
             services.AddScoped<IProveedorRepository, ProveedorRepository>();
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+            services.AddScoped<IArticuloRepository, ArticuloRepository>();
 
             // Cors
             services.AddCors(options => options.AddPolicy("AllowWebapp",

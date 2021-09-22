@@ -15,10 +15,7 @@ namespace BackEnd.Migrations
                     Cantidad = table.Column<int>(nullable: false),
                     Precio = table.Column<double>(nullable: false),
                     CategoriaId = table.Column<int>(nullable: false),
-                    CategoriaNombre = table.Column<string>(nullable: true),
-                    ProveedorId = table.Column<int>(nullable: false),
-                    proveedorNit = table.Column<string>(nullable: false),
-                    ProveedorRazon = table.Column<string>(nullable: true)
+                    ProveedorNit = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -30,11 +27,11 @@ namespace BackEnd.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Articulos_Proveedores_proveedorNit",
-                        column: x => x.proveedorNit,
+                        name: "FK_Articulos_Proveedores_ProveedorNit",
+                        column: x => x.ProveedorNit,
                         principalTable: "Proveedores",
                         principalColumn: "Nit",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -43,9 +40,9 @@ namespace BackEnd.Migrations
                 column: "CategoriaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Articulos_proveedorNit",
+                name: "IX_Articulos_ProveedorNit",
                 table: "Articulos",
-                column: "proveedorNit");
+                column: "ProveedorNit");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

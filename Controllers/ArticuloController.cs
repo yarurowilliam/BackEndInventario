@@ -13,27 +13,22 @@ namespace BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoriaController : ControllerBase
+    public class ArticuloController : ControllerBase
     {
-        private readonly ICategoriaService _categoriaService;
-        public CategoriaController(ICategoriaService categoriaService)
+        private readonly IArticuloService _articuloService;
+        public ArticuloController(IArticuloService articuloService)
         {
-            _categoriaService = categoriaService;
+            _articuloService = articuloService;
         }
 
         [HttpPost]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<IActionResult> Post([FromBody] Categoria categoria)
+        public async Task<IActionResult> Post([FromBody] Articulo articulo)
         {
             try
             {
-                var validateExistence = await _categoriaService.ValidateExistence(categoria);
-                if (validateExistence)
-                {
-                    return BadRequest(new { message = "la categoria " + categoria.NombreCategoria + " ya existe! " });
-                }
-                await _categoriaService.SavedCategoria(categoria);
-                return Ok(new { message = "Categoria registrada con exito" });
+                await _articuloService.SavedArticulo(articulo);
+                return Ok(new { message = "Articulo registrado con exito" });
             }
             catch (Exception ex)
             {
@@ -41,15 +36,15 @@ namespace BackEnd.Controllers
             }
         }
 
-        [Route("GetListCategorias")]
+        [Route("GetListArticulos")]
         [HttpGet]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<IActionResult> GetListCategorias()
+        public async Task<IActionResult> GetListArticulos()
         {
             try
             {
-                var listCategoria = await _categoriaService.GetListCategorias();
-                return Ok(listCategoria);
+                var listArticulo = await _articuloService.GetListArticulos();
+                return Ok(listArticulo);
             }
             catch (Exception ex)
             {
@@ -57,14 +52,14 @@ namespace BackEnd.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{referencia}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> Get(string referencia)
         {
             try
             {
-                var categoria = await _categoriaService.GetCategoria(id);
-                return Ok(categoria);
+                var articulo = await _articuloService.GetArticulo(referencia);
+                return Ok(articulo);
             }
             catch (Exception e)
             {
@@ -72,19 +67,19 @@ namespace BackEnd.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{referencia}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string referencia)
         {
             try
             {
-                var categoria = await _categoriaService.BuscarCategoria(id);
+                var categoria = await _articuloService.BuscarArticulo(referencia);
                 if (categoria == null)
                 {
-                    return BadRequest(new { message = "No se encontro ninguna categoria" });
+                    return BadRequest(new { message = "No se encontro ningun articulo" });
                 }
-                await _categoriaService.EliminarCategoria(categoria);
-                return Ok(new { message = "La categoria fue eliminada con exito" });
+                await _articuloService.EliminarArticulo(categoria);
+                return Ok(new { message = "El articulo fue eliminado con exito" });
             }
             catch (Exception ex)
             {

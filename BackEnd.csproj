@@ -7,6 +7,14 @@
   <ItemGroup>
     <Compile Remove="Migrations\20210922191957_Inicialv1.4.cs" />
     <Compile Remove="Migrations\20210922191957_Inicialv1.4.Designer.cs" />
+    <Compile Remove="Migrations\20210922195221_Inicialv1.5.cs" />
+    <Compile Remove="Migrations\20210922195221_Inicialv1.5.Designer.cs" />
+    <Compile Remove="Migrations\20210922195353_Inicialv1.5.cs" />
+    <Compile Remove="Migrations\20210922195353_Inicialv1.5.Designer.cs" />
+    <Compile Remove="Migrations\20210922195728_Inicialv1.4.cs" />
+    <Compile Remove="Migrations\20210922195728_Inicialv1.4.Designer.cs" />
+    <Compile Remove="Migrations\20210922195821_Inicialv1.4.cs" />
+    <Compile Remove="Migrations\20210922195821_Inicialv1.4.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
