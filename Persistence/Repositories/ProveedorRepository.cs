@@ -17,9 +17,22 @@ namespace BackEnd.Persistence.Repositories
             _context = context;
         }
 
+        public async Task<Proveedor> BuscarProveedor(string nit)
+        {
+            var proveedor = await _context.Proveedores.Where(x => x.Nit == nit).FirstOrDefaultAsync();
+            return proveedor;
+        }
+
         public async Task CreateProveedor(Proveedor proveedor)
         {
             _context.Add(proveedor);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task EliminarProveedor(Proveedor proveedor)
+        {
+            _context.Proveedores.Remove(proveedor);
+            //_context.Entry(proveedor).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 

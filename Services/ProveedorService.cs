@@ -17,9 +17,19 @@ namespace BackEnd.Services
             _proveedorRepository = proveedorRepository;
         }
 
+        public async Task<Proveedor> BuscarProveedor(string nit)
+        {
+            return await _proveedorRepository.BuscarProveedor(nit);
+        }
+
         public async Task CreateProveedor(Proveedor proveedor)
         {
             await _proveedorRepository.CreateProveedor(proveedor);
+        }
+
+        public async Task EliminarProveedor(Proveedor proveedor)
+        {
+            await _proveedorRepository.EliminarProveedor(proveedor);
         }
 
         public async Task<List<Proveedor>> GetListProveedores()

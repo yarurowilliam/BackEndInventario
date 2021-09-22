@@ -12,5 +12,7 @@ namespace BackEnd.Domain.IRepositories
         Task<List<Proveedor>> GetListProveedores();
         Task<List<Proveedor>> GetListProveedoresFiltrada(string nit);
         Task<Proveedor> GetProveedor(string nit);
+        Task<Proveedor> BuscarProveedor(string nit);
+        Task EliminarProveedor(Proveedor proveedor);
     }
 }

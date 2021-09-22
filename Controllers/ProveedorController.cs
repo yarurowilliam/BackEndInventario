@@ -72,16 +72,36 @@ namespace BackEnd.Controllers
 
 
         [HttpGet("{nit}")]
-        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Get(string nit)
         {
             try
             {
-                var cuestionario = await _proveedorService.GetProveedor(nit);
-                return Ok(cuestionario);
+                var proveedor = await _proveedorService.GetProveedor(nit);
+                return Ok(proveedor);
             }catch(Exception e) 
             {
                 return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("{nit}")]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> Delete(string nit)
+        {
+            try
+            {
+                var proveedor = await _proveedorService.BuscarProveedor(nit);
+                if (proveedor == null)
+                {
+                    return BadRequest(new { message = "No se encontro ningun proveedor" });
+                }
+                await _proveedorService.EliminarProveedor(proveedor);
+                return Ok(new { message = "El proveedor fue eliminado con exito" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }
