@@ -33,7 +33,7 @@ namespace BackEnd.Controllers
                 var user = await _loginService.ValidateUser(usuario);
                 if(user == null)
                 {
-                    return BadRequest(new { message = " Usuario o contraseña invalidos " });
+                    return BadRequest(new { message = " Usuario o contraseña invalidos o este usuario no es ADMINISTRADOR" });
                 }
                 string tokenString = JwtConfigurator.GetToken(user, _config);
                 return Ok(new { token = tokenString });

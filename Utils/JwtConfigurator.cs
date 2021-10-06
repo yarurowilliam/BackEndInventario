@@ -25,14 +25,16 @@ namespace BackEnd.Utils
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, userInfo.NombreUsuario),
-                new Claim("idUsuario", userInfo.Id.ToString())
+                new Claim("idUsuario", userInfo.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Sid, userInfo.RolUser),
+                new Claim("rolUsuario", userInfo.RolUser.ToString())
                };
 
             var token = new JwtSecurityToken(
                 issuer: Issuer,
                 audience: Audience,
                 claims,
-                expires: DateTime.Now.AddMinutes(60),
+                expires: DateTime.Now.AddHours(1),
                 signingCredentials: credentials
                 );
 
