@@ -13,6 +13,7 @@ namespace BackEnd.Persistence.Context
         public DbSet<Proveedor> Proveedores { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Articulo> Articulos { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
         public AplicationDbContext(DbContextOptions<AplicationDbContext> options) : base(options)
         {
 
