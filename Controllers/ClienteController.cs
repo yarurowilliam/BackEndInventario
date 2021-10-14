@@ -84,7 +84,7 @@ namespace BackEnd.Controllers
             }
         }
 
-        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut("{identificacion}")]
         public async Task<IActionResult> PutCliente(string identificacion, Cliente item)
         {
