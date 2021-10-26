@@ -49,5 +49,11 @@ namespace BackEnd.Persistence.Repositories
             _context.Add(articulo);
             await _context.SaveChangesAsync();
         }
+
+        public async Task UpdateCantidad(Articulo articulo)
+        {
+            _context.Update(articulo);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -41,6 +41,11 @@ namespace BackEnd.Services
         {
             await _articuloRepository.SavedArticulo(articulo);
         }
+
+        public async Task UpdateCantidad(Articulo articulo)
+        {
+            await _articuloRepository.UpdateCantidad(articulo);
+        }
     }
 
 

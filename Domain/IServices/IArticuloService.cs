@@ -13,5 +13,6 @@ namespace BackEnd.Domain.IServices
         Task<Articulo> GetArticulo(string referencia);
         Task<Articulo> BuscarArticulo(string referencia);
         Task EliminarArticulo(Articulo articulo);
+        Task UpdateCantidad(Articulo articulo);
     }
 }

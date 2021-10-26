@@ -70,7 +70,7 @@ namespace BackEnd.Controllers
         }
 
         [HttpGet("{identificacion}")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Get(string identificacion)
         {
             try

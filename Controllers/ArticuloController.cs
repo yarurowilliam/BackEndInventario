@@ -87,5 +87,17 @@ namespace BackEnd.Controllers
             }
         }
 
+
+        [HttpPut("{referencia}")]
+        public async Task<IActionResult> UpdateCantidad(string referencia, Articulo item)
+        {
+            if (referencia != item.Referencia)
+            {
+                return BadRequest(new { message = "Articulo no encontrado" });
+            }
+            await _articuloService.UpdateCantidad(item);
+            return Ok(new { message = "Listo!" });
+        }
+
     }
 }
