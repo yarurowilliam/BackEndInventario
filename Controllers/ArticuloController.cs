@@ -27,6 +27,9 @@ namespace BackEnd.Controllers
         {
             try
             {
+                articulo.EstadoCompra = "PENDIENTE";
+                articulo.PrecioFinalCompra = 0;
+                articulo.Comentarios = "Agregar comentarios";
                 await _articuloService.SavedArticulo(articulo);
                 return Ok(new { message = "Articulo registrado con exito" });
             }
@@ -51,6 +54,23 @@ namespace BackEnd.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [Route("GetListArticulosComprados")]
+        [HttpGet]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetListArticulosComprados()
+        {
+            try
+            {
+                var listArticulo = await _articuloService.GetListArticulosComprados();
+                return Ok(listArticulo);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
         [HttpGet("{referencia}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]

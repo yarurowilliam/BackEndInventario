@@ -17,6 +17,22 @@ namespace BackEnd.Persistence.Repositories
         {
             _context = context;
         }
+        public async Task UpdateRol(Usuario usuario)
+        {
+            _context.Update(usuario);
+            await _context.SaveChangesAsync();
+        }
+        public async Task<List<Usuario>> GetListUsuarios()
+        {
+            var listUsuarios = await _context.Usuarios.Where(x => x.Id != null).ToListAsync();
+            return listUsuarios;
+        }
+
+        public async Task<Usuario> GetUsuario(int id)
+        {
+            var usuario = await _context.Usuarios.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return usuario;
+        }
 
         public async Task SavedUser(Usuario usuario)
         {

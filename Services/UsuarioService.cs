@@ -17,6 +17,20 @@ namespace BackEnd.Services
             _usuarioRepository = usuarioRepository;
         }
 
+        public async Task<List<Usuario>> GetListUsuarios()
+        {
+            return await _usuarioRepository.GetListUsuarios();
+        }
+
+        public async Task<Usuario> GetUsuario(int id)
+        {
+            return await _usuarioRepository.GetUsuario(id);
+        }
+        public async Task UpdateRol(Usuario usuario)
+        {
+            await _usuarioRepository.UpdateRol(usuario);
+        }
+
 
         public async Task SavedUser(Usuario usuario)
         {

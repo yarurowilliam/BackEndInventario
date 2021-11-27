@@ -44,6 +44,12 @@ namespace BackEnd.Persistence.Repositories
             return listaArticulo;
         }
 
+        public async Task<List<Articulo>> GetListArticulosComprados()
+        {
+            var listaArticulo = await _context.Articulos.Where(x => x.EstadoCompra == "COMPRADO").ToListAsync();
+            return listaArticulo;
+        }
+
         public async Task SavedArticulo(Articulo articulo)
         {
             _context.Add(articulo);

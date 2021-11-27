@@ -19,11 +19,16 @@ namespace BackEnd.Domain.Models
         public int Cantidad { get; set; }
         [Required]
         public double Precio { get; set; }
-
+        
         public int CategoriaId { get; set; }
         public Categoria categoria { get; set; }
         public string ProveedorNit { get; set; }
         public Proveedor proveedor { get; set; }
+
+        public string EstadoCompra { get; set; }
+        public double PrecioFinalCompra { get; set; }
+        public string Comentarios { get; set; }
+
 
 
 

@@ -12,5 +12,8 @@ namespace BackEnd.Domain.IServices
         Task<bool> ValidateExistence(Usuario usuario);
         Task<Usuario> ValidatePassword(int idUsuario, string passwordAnterior);
         Task UpdatePassword(Usuario usuario);
+        Task<List<Usuario>> GetListUsuarios();
+        Task<Usuario> GetUsuario(int id);
+        Task UpdateRol(Usuario usuario);
     }
 }

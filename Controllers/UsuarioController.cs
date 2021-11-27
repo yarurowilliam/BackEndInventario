@@ -43,6 +43,37 @@ namespace BackEnd.Controllers
             }
         }
 
+        [Route("GetListUsuarios")]
+        [HttpGet]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetListUsuarios()
+        {
+            try
+            {
+                var listUsuarios = await _usuarioService.GetListUsuarios();
+                return Ok(listUsuarios);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("{id}")]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> Get(int id)
+        {
+            try
+            {
+                var usuario = await _usuarioService.GetUsuario(id);
+                return Ok(usuario);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         // localhost:xxxx/api/Usuario/CambiarPassword
         [Route("CambiarPassword")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -72,6 +103,17 @@ namespace BackEnd.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> CambiarRol(long id, Usuario item)
+        {
+            if (id != item.Id)
+            {
+                return BadRequest(new { message = "Usuario no encontrado" });
+            }
+            await _usuarioService.UpdateRol(item);
+            return Ok(new { message = "El nuevo rol fue asignado correctamente" });
         }
     }
 }
