@@ -76,5 +76,16 @@ namespace BackEnd.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateVenta(int id, Venta item)
+        {
+            if (id != item.Id)
+            {
+                return BadRequest(new { message = "Venta no encontrada" });
+            }
+            await _ventaService.UpdateVenta(item);
+            return Ok(new { message = "Listo!" });
+        }
     }
 }

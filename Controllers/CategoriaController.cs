@@ -92,5 +92,16 @@ namespace BackEnd.Controllers
             }
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateCategoria(int id, Categoria item)
+        {
+            if (id != item.Id)
+            {
+                return BadRequest(new { message = "Categoria no encontrada" });
+            }
+            await _categoriaService.UpdateCategoria(item);
+            return Ok(new { message = "Listo!" });
+        }
+
     }
 }

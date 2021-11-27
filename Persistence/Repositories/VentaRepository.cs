@@ -36,5 +36,11 @@ namespace BackEnd.Persistence.Repositories
                                                     .FirstOrDefaultAsync();
             return venta;
         }
+
+        public async Task UpdateVenta(Venta venta)
+        {
+            _context.Update(venta);
+            await _context.SaveChangesAsync();
+        }
     }
 }

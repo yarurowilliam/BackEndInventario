@@ -14,5 +14,6 @@ namespace BackEnd.Domain.IServices
         Task<Categoria> GetCategoria(int id);
         Task<Categoria> BuscarCategoria(int id);
         Task EliminarCategoria(Categoria categoria);
+        Task UpdateCategoria(Categoria categoria);
     }
 }

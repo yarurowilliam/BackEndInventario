@@ -44,6 +44,11 @@ namespace BackEnd.Services
             await _categoriaRepository.SavedCategoria(categoria);
         }
 
+        public async Task UpdateCategoria(Categoria categoria)
+        {
+            await _categoriaRepository.UpdateCategoria(categoria);
+        }
+
         public async Task<bool> ValidateExistence(Categoria categoria)
         {
             return await _categoriaRepository.ValidateExistence(categoria);

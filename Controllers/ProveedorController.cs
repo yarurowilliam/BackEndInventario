@@ -104,5 +104,16 @@ namespace BackEnd.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("{nit}")]
+        public async Task<IActionResult> UpdateProveedor(string nit, Proveedor item)
+        {
+            if (nit != item.Nit)
+            {
+                return BadRequest(new { message = "Proveedor no encontrado" });
+            }
+            await _proveedorService.UpdateProveedor(item);
+            return Ok(new { message = "Listo!" });
+        }
     }
 }

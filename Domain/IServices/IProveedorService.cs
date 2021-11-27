@@ -14,5 +14,6 @@ namespace BackEnd.Domain.IServices
         Task<Proveedor> GetProveedor(string nit);
         Task<Proveedor> BuscarProveedor(string nit);
         Task EliminarProveedor(Proveedor proveedor);
+        Task UpdateProveedor(Proveedor proveedor);
     }
 }

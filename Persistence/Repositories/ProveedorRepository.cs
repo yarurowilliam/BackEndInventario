@@ -53,5 +53,11 @@ namespace BackEnd.Persistence.Repositories
             var proveedor = await _context.Proveedores.Where(x => x.Nit == nit).FirstOrDefaultAsync();
             return proveedor;
         }
+
+        public async Task UpdateProveedor(Proveedor proveedor)
+        {
+            _context.Update(proveedor);
+            await _context.SaveChangesAsync();
+        }
     }
 }

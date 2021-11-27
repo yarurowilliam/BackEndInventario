@@ -48,6 +48,13 @@ namespace BackEnd.Persistence.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task UpdateCategoria(Categoria categoria)
+        {
+
+                _context.Update(categoria);
+                await _context.SaveChangesAsync();
+        }
+
         public async Task<bool> ValidateExistence(Categoria categoria)
         {
             var validateExistence = await _context.Categorias.AnyAsync(x => x.NombreCategoria == categoria.NombreCategoria);

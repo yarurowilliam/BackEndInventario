@@ -30,5 +30,10 @@ namespace BackEnd.Services
         {
             return await _ventaRepository.GetVenta(id);
         }
+
+        public async Task UpdateVenta(Venta venta)
+        {
+            await _ventaRepository.UpdateVenta(venta);
+        }
     }
 }
