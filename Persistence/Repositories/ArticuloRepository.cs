@@ -50,6 +50,26 @@ namespace BackEnd.Persistence.Repositories
             return listaArticulo;
         }
 
+        public List<ArticuloFiltro> GetListArticulosConNombres()
+        {
+            var query = from a in _context.Articulos
+                        join s in _context.Proveedores on a.ProveedorNit equals s.Nit
+                        join c in _context.Categorias on a.CategoriaId equals c.Id
+                        select new ArticuloFiltro
+                        {
+                            Referencia = a.Referencia,
+                            Nombre = a.Nombre,
+                            Cantidad = a.Cantidad,
+                            Precio = a.Precio,
+                            Categoria = c.NombreCategoria,
+                            Proveedor = s.RazonSocial,
+                            Comentarios = a.Comentarios,
+                            EstadoCompra = a.EstadoCompra
+                        };
+            var listaArticulo = query.ToList();
+            return listaArticulo;
+        }
+
         public async Task SavedArticulo(Articulo articulo)
         {
             _context.Add(articulo);

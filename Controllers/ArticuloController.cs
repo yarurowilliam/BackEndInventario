@@ -71,6 +71,22 @@ namespace BackEnd.Controllers
             }
         }
 
+        [Route("GetListArticulosConNombres")]
+        [HttpGet]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public IActionResult GetListArticulosConNombres()
+        {
+            try
+            {
+                var listArticulo =_articuloService.GetListArticulosConNombres();
+                return Ok(listArticulo);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
         [HttpGet("{referencia}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]

@@ -15,5 +15,6 @@ namespace BackEnd.Domain.IRepositories
         Task EliminarArticulo(Articulo articulo);
         Task UpdateCantidad(Articulo articulo);
         Task<List<Articulo>> GetListArticulosComprados();
+        List<ArticuloFiltro> GetListArticulosConNombres();
     }
 }

@@ -42,6 +42,11 @@ namespace BackEnd.Services
             return await _articuloRepository.GetListArticulosComprados();
         }
 
+        public List<ArticuloFiltro> GetListArticulosConNombres()
+        {
+            return _articuloRepository.GetListArticulosConNombres();
+        }
+
         public async Task SavedArticulo(Articulo articulo)
         {
             await _articuloRepository.SavedArticulo(articulo);
