@@ -41,5 +41,21 @@ namespace BackEnd.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [Route("ArticuloMenosVendido")]
+        [HttpGet]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetMenos()
+        {
+            try
+            {
+                var venta = await _ventaService.MenosVendido();
+                return Ok(venta);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

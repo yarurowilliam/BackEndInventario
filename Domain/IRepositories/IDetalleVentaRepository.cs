@@ -9,6 +9,7 @@ namespace BackEnd.Domain.IRepositories
     public interface IDetalleVentaRepository
     {
         Task<ArticuloVendidoModel> TraerPrueba();
+        Task<ArticuloVendidoModel> MenosVendido();
         string ArticuloMasVendido();
     }
 }

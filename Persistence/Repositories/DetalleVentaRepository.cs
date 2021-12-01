@@ -38,6 +38,29 @@ namespace BackEnd.Persistence.Repositories
             return identi;
         }
 
+        public async Task<ArticuloVendidoModel> MenosVendido()
+        {
+            var guardarId = "";
+            var query = from liq in _context.DetalleVentas
+                        group liq by liq.Nombre into g
+                        select new ArticuloVendidoModel
+                        {
+                            NombreProducto = g.Key,
+                            TotalVendido = g.Sum(x => x.Cantidad)
+                        };
+            var result = query.Min(x => x.TotalVendido);
+            foreach (var prueba in query)
+            {
+                if (result == prueba.TotalVendido)
+                {
+                    guardarId = prueba.NombreProducto;
+                }
+            }
+            var venta = await query.Where(x => x.NombreProducto == guardarId).FirstOrDefaultAsync();
+
+            return venta;
+        }
+
         public async Task<ArticuloVendidoModel> TraerPrueba()
         {
             var guardarId = "";

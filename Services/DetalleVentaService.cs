@@ -21,6 +21,11 @@ namespace BackEnd.Services
             return _ventaRepository.ArticuloMasVendido();
         }
 
+        public async Task<ArticuloVendidoModel> MenosVendido()
+        {
+            return await _ventaRepository.MenosVendido();
+        }
+
         public async Task<ArticuloVendidoModel> TraerPrueba()
         {
             return await _ventaRepository.TraerPrueba();
