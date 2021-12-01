@@ -37,6 +37,12 @@ namespace BackEnd.Persistence.Repositories
             return venta;
         }
 
+        public double TraerGanancias()
+        {
+            var totalGanancias = _context.Ventas.Where(x => x.Id != 0).Sum(x => x.TotalPagar);
+            return totalGanancias;
+        }
+
         public async Task UpdateVenta(Venta venta)
         {
             _context.Update(venta);

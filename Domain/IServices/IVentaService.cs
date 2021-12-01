@@ -12,5 +12,6 @@ namespace BackEnd.Domain.IServices
         Task<List<Venta>> GetListVentas();
         Task<Venta> GetVenta(int id);
         Task UpdateVenta(Venta venta);
+        double TraerGanancias();
     }
 }

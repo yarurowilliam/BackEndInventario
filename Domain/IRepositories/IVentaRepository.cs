@@ -12,5 +12,6 @@ namespace BackEnd.Domain.IRepositories
         Task<List<Venta>> GetListVentas();
         Task<Venta> GetVenta(int id);
         Task UpdateVenta(Venta venta);
+        double TraerGanancias();
     }
 }

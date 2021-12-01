@@ -31,6 +31,11 @@ namespace BackEnd.Services
             return await _ventaRepository.GetVenta(id);
         }
 
+        public double TraerGanancias()
+        {
+            return _ventaRepository.TraerGanancias();
+        }
+
         public async Task UpdateVenta(Venta venta)
         {
             await _ventaRepository.UpdateVenta(venta);

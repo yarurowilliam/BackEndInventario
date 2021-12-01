@@ -61,7 +61,21 @@ namespace BackEnd.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        [Route("TraerGanancias")]
+        [HttpGet]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public IActionResult TraerGanancias()
+        {
+            try
+            {
+                var totalGanancias = _ventaService.TraerGanancias();
+                return Ok(totalGanancias);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         [HttpGet("{id}")]
         //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Get(int id)
