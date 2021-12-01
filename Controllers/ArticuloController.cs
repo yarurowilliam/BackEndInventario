@@ -132,7 +132,7 @@ namespace BackEnd.Controllers
                 return BadRequest(new { message = "Articulo no encontrado" });
             }
             await _articuloService.UpdateCantidad(item);
-            return Ok(new { message = "Listo!" });
+            return Ok(new { message = "Se gestiono correctamente esta compra!" });
         }
 
     }
