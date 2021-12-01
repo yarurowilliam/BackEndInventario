@@ -76,6 +76,12 @@ namespace BackEnd.Persistence.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public double TraerTotalGastos()
+        {
+            var totalGastos = _context.Articulos.Where(x => x.EstadoCompra == "COMPRADO").Sum(x => x.PrecioFinalCompra);
+            return totalGastos;
+        }
+
         public async Task UpdateCantidad(Articulo articulo)
         {
             _context.Update(articulo);

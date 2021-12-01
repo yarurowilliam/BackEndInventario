@@ -87,6 +87,22 @@ namespace BackEnd.Controllers
             }
         }
 
+        [Route("TraerTotalGastos")]
+        [HttpGet]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public IActionResult TraerTotalGastos()
+        {
+            try
+            {
+                var totalGastos = _articuloService.TraerTotalGastos();
+                return Ok(totalGastos);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
         [HttpGet("{referencia}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]

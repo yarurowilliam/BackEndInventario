@@ -16,5 +16,6 @@ namespace BackEnd.Domain.IServices
         Task UpdateCantidad(Articulo articulo);
         Task<List<Articulo>> GetListArticulosComprados();
         List<ArticuloFiltro> GetListArticulosConNombres();
+        double TraerTotalGastos();
     }
 }

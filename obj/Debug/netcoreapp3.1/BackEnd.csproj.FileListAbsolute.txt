@@ -211,7 +211,6 @@ C:\Users\WillYer\Desktop\ProyectoInventario\BackEnd\BackEnd\bin\Debug\netcoreapp
 C:\Users\WillYer\Desktop\ProyectoInventario\BackEnd\BackEnd\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\WillYer\Desktop\ProyectoInventario\BackEnd\BackEnd\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\WillYer\Desktop\ProyectoInventario\BackEnd\BackEnd\bin\Debug\netcoreapp3.1\BackEnd.Views.dll
-C:\Users\WillYer\Desktop\ProyectoInventario\BackEnd\BackEnd\bin\Debug\netcoreapp3.1\BackEnd.Views.pdb
 C:\Users\WillYer\Desktop\ProyectoInventario\BackEnd\BackEnd\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 C:\Users\WillYer\Desktop\ProyectoInventario\BackEnd\BackEnd\bin\Debug\netcoreapp3.1\itextsharp.dll
 C:\Users\WillYer\Desktop\ProyectoInventario\BackEnd\BackEnd\obj\Debug\netcoreapp3.1\BackEnd.csprojAssemblyReference.cache

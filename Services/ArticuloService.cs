@@ -52,6 +52,11 @@ namespace BackEnd.Services
             await _articuloRepository.SavedArticulo(articulo);
         }
 
+        public double TraerTotalGastos()
+        {
+            return _articuloRepository.TraerTotalGastos();
+        }
+
         public async Task UpdateCantidad(Articulo articulo)
         {
             await _articuloRepository.UpdateCantidad(articulo);
