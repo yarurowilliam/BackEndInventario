@@ -61,6 +61,23 @@ namespace BackEnd.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [Route("GetMejorCliente")]
+        [HttpGet]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public IActionResult GetMejorCliente()
+        {
+            try
+            {
+                var cliente = _ventaService.GetMejorCliente();
+                return Ok(cliente);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [Route("TraerGanancias")]
         [HttpGet]
         //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
