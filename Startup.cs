@@ -45,7 +45,7 @@ namespace BackEnd
             services.AddScoped<IArticuloService, ArticuloService>();
             services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<IVentaService, VentaService>();
-
+            services.AddScoped<IDetalleVentaService, DetalleVentaService>();
             //repository
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ILoginRepository, LoginRepository>();
@@ -54,7 +54,7 @@ namespace BackEnd
             services.AddScoped<IArticuloRepository, ArticuloRepository>();
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IVentaRepository, VentaRepository>();
-
+            services.AddScoped<IDetalleVentaRepository, DetalleVentaRepository>();
             // Cors
             services.AddCors(options => options.AddPolicy("AllowWebapp",
                                                 builder => builder.AllowAnyOrigin()
