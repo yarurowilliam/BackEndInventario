@@ -78,8 +78,14 @@ namespace BackEnd.Persistence.Repositories
 
         public double TraerTotalGastos()
         {
+            var listaArticulo = _context.Articulos.Where(x => x.EstadoCompra == "COMPRADO").ToList();
+            double calcular = 0;
+            foreach (var prueba in listaArticulo)
+            {
+                calcular = calcular+(prueba.Cantidad * prueba.PrecioFinalCompra);
+            }
             var totalGastos = _context.Articulos.Where(x => x.EstadoCompra == "COMPRADO").Sum(x => x.PrecioFinalCompra);
-            return totalGastos;
+            return calcular;
         }
 
         public async Task UpdateCantidad(Articulo articulo)

@@ -10,6 +10,7 @@ namespace BackEnd.Domain.IServices
     {
         Task<ArticuloVendidoModel> TraerPrueba();
         Task<ArticuloVendidoModel> MenosVendido();
+        Task<CategoriaVendida> MejorCategoria();
         string ArticuloMasVendido();
     }
 }

@@ -57,5 +57,21 @@ namespace BackEnd.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [Route("MejorCategoria")]
+        [HttpGet]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> MejorCategoria()
+        {
+            try
+            {
+                var venta = await _ventaService.MejorCategoria();
+                return Ok(venta);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

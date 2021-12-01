@@ -21,6 +21,11 @@ namespace BackEnd.Services
             return _ventaRepository.ArticuloMasVendido();
         }
 
+        public async Task<CategoriaVendida> MejorCategoria()
+        {
+            return await _ventaRepository.MejorCategoria();
+        }
+
         public async Task<ArticuloVendidoModel> MenosVendido()
         {
             return await _ventaRepository.MenosVendido();
