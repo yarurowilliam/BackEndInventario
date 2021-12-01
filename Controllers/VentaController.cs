@@ -65,18 +65,19 @@ namespace BackEnd.Controllers
         [Route("GetMejorCliente")]
         [HttpGet]
         //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public IActionResult GetMejorCliente()
+        public async Task<IActionResult> MejorCliente(int id)
         {
             try
             {
-                var cliente = _ventaService.GetMejorCliente();
-                return Ok(cliente);
+                var venta = await _ventaService.GetMejorCliente();
+                return Ok(venta);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(e.Message);
             }
         }
+
 
         [Route("TraerGanancias")]
         [HttpGet]

@@ -13,6 +13,6 @@ namespace BackEnd.Domain.IRepositories
         Task<Venta> GetVenta(int id);
         Task UpdateVenta(Venta venta);
         double TraerGanancias();
-        string GetMejorCliente();
+        Task<ClienteFiltro> GetMejorCliente();
     }
 }

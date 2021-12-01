@@ -26,9 +26,9 @@ namespace BackEnd.Services
             return await _ventaRepository.GetListVentas();
         }
 
-        public string GetMejorCliente()
+        public async Task<ClienteFiltro> GetMejorCliente()
         {
-            return _ventaRepository.GetMejorCliente();
+            return await _ventaRepository.GetMejorCliente();
         }
 
         public async Task<Venta> GetVenta(int id)

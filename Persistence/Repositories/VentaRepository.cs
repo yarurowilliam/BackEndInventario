@@ -28,26 +28,36 @@ namespace BackEnd.Persistence.Repositories
             var listVentas = await _context.Ventas.Where(x => x.Id != 0).ToListAsync();
             return listVentas;
         }
-        
-        public string GetMejorCliente()
+
+        public async Task<ClienteFiltro> GetMejorCliente()
         {
             string identi = "";
-            var query = from liq in _context.Ventas
+            var query1 = from liq in _context.Ventas
                         group liq by liq.ClienteId into g
                         select new VentaPrueba
                         {
                             ClienteId = g.Key,
                             TotalPagar = g.Sum(x => x.TotalPagar)
                         };
-            var result = query.Max(x => x.TotalPagar );
+
+            var query = from a in query1
+                        join s in _context.Clientes on a.ClienteId equals s.Identificacion
+                        select new ClienteFiltro
+                        {
+                            Identificacion = a.ClienteId,
+                            Nombre = s.Nombre + " " + s.Apellido,
+                            TotalPagado = a.TotalPagar
+                        };
+            var result = query.Max(x => x.TotalPagado);
             foreach (var prueba in query)
             {
-                if (result == prueba.TotalPagar)
+                if (result == prueba.TotalPagado)
                 {
-                    identi = prueba.ClienteId;
+                    identi = prueba.Identificacion;
                 }
             }
-            return identi;
+            var cliente = await query.Where(x => x.Identificacion == identi).FirstOrDefaultAsync();
+            return cliente;
         }
 
         public async Task<Venta> GetVenta(int id)
@@ -70,5 +80,6 @@ namespace BackEnd.Persistence.Repositories
             _context.Update(venta);
             await _context.SaveChangesAsync();
         }
+
     }
 }
